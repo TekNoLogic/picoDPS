@@ -1,0 +1,13 @@
+## Interface: 20400
+## Title: picoDPS
+## Notes: A DPS Data Broker plugin.
+## Author: Silverstorm
+## X-Category: Combat
+# X-Website: http://www.wowace.com/wiki/StatBlocks
+## Version: 2.0
+
+LibStub.lua
+CallbackHandler-1.0.lua
+LibDataBroker-1.1.lua
+
+picoDPS.lua
