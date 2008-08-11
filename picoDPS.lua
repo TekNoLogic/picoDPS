@@ -48,7 +48,7 @@ function f:PARTY_MEMBERS_CHANGED()
 		ids["party"..i] = UnitGUID("party"..i)
 		if ids["party"..i] then
 			units[ids["party"..i]] = ids["party"..i]
-			unitnames["party"..i] = "|cff"..colors[select(2, UnitClass("party"..i))]..UnitName("party"..i).."|r"
+			unitnames["party"..i] = "|cff"..colors[select(2, UnitClass("party"..i)) or "PRIEST"]..UnitName("party"..i).."|r"
 		end
 
 		local petid = UnitGUID("partypet"..i)
