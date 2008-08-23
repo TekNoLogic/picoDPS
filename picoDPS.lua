@@ -21,6 +21,7 @@ f:SetScript("OnUpdate", function(self, elap)
 		if UnitAffectingCombat(unit) then times[id] = (times[id] or 0) + elap end
 	end
 
+	obj.text = string.format("%.1f DPS", (damagetotals[ids.player] or 0)/(times[ids.player] or 1))
 	if shown then obj.OnEnter(shown) end
 end)
 
