@@ -4,7 +4,7 @@
 ## Author: Silverstorm
 ## X-Category: Combat
 # X-Website: http://www.wowace.com/wiki/StatBlocks
-## Version: 2.0
+## Version: 3.0.1.1
 
 LibStub.lua
 CallbackHandler-1.0.lua
