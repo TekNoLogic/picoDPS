@@ -77,6 +77,13 @@ function f:PLAYER_REGEN_ENABLED()
 end
 
 
+function obj:OnClick()
+	for i in pairs(damagetotals) do damagetotals[i] = nil end
+	for i in pairs(times) do times[i] = nil end
+
+	obj.text = "0.0 DPS"
+end
+
 
 ------------------------
 --      Tooltip!      --
