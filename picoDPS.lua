@@ -98,24 +98,25 @@ local function GetTipAnchor(frame)
 end
 
 
+local tip = LibStub("tektip-1.0").new(3)
 function obj.OnEnter(self)
 	shown = self
- 	GameTooltip:SetOwner(self, "ANCHOR_NONE")
-	GameTooltip:SetPoint(GetTipAnchor(self))
-	GameTooltip:ClearLines()
+	tip:AnchorTo(self)
 
-	GameTooltip:AddLine("picoDPS")
+	tip:AddLine("picoDPS")
+	tip:AddLine(" ")
 
-	GameTooltip:AddDoubleLine(unitnames.player or UnitName("player"), string.format("%.1f DPS (%d)", (damagetotals[ids.player] or 0)/(times[ids.player] or 1), damagetotals[ids.player] or 0), nil,nil,nil,1,1,1)
+	tip:AddMultiLine("Player", "Total", "DPS")
+	tip:AddMultiLine(unitnames.player or UnitName("player"), damagetotals[ids.player] or 0, string.format("%.1f", (damagetotals[ids.player] or 0)/(times[ids.player] or 1)), nil,nil,nil, 1,1,1, 1,1,1)
 	for unit,id in pairs(ids) do
-		if unit ~= "player" then GameTooltip:AddDoubleLine(unitnames[unit] or UnitName(unit), string.format("%.1f DPS (%d)", (damagetotals[id] or 0)/(times[id] or 1), damagetotals[id] or 0), nil,nil,nil,1,1,1) end
+		if unit ~= "player" then tip:AddMultiLine(unitnames[unit] or UnitName(unit), damagetotals[id] or 0, string.format("%.1f", (damagetotals[id] or 0)/(times[id] or 1)), nil,nil,nil, 1,1,1, 1,1,1) end
 	end
 
-	GameTooltip:Show()
+	tip:Show()
 end
 
 
 function obj.OnLeave()
 	shown = nil
-	GameTooltip:Hide()
+	tip:Hide()
 end
