@@ -5,7 +5,7 @@ local events = {SWING_DAMAGE = true, RANGE_DAMAGE = true, SPELL_DAMAGE = true, S
 for class,color in pairs(RAID_CLASS_COLORS) do colors[class] = string.format("%02x%02x%02x", color.r*255, color.g*255, color.b*255) end
 
 
-local obj = LibStub("LibDataBroker-1.1"):NewDataObject("picoDPS", {text = "0.0 DPS"})
+local obj = LibStub("LibDataBroker-1.1"):NewDataObject("picoDPS", {type = "data source", text = "0.0 DPS"})
 
 
 local f = CreateFrame("Frame")
