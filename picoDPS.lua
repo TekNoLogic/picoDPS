@@ -14,6 +14,7 @@ f:RegisterEvent("PLAYER_LOGIN")
 f:RegisterEvent("PLAYER_REGEN_ENABLED")
 f:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 f:RegisterEvent("PARTY_MEMBERS_CHANGED")
+f:RegisterEvent("UNIT_PET")
 
 
 f:SetScript("OnUpdate", function(self, elap)
@@ -41,6 +42,19 @@ function f:PLAYER_LOGIN()
 
 	self:UnregisterEvent("PLAYER_LOGIN")
 	self.PLAYER_LOGIN = nil
+end
+
+
+function f:UNIT_PET(unit)
+	if unit == "player" then
+		local petid = UnitGUID("pet")
+		ids.pet = petid
+		if petid then units[petid] = ids.player end
+	else
+		local group, id = unit:match("^(%D+)(%d+)$")
+		local petid = UnitGUID(group.."pet"..id)
+		if petid then units[petid] = ids[unit] end
+	end
 end
 
 
