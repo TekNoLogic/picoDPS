@@ -123,7 +123,7 @@ function obj.OnEnter(self)
 	tip:AddMultiLine("Player", "Total", "DPS")
 	tip:AddMultiLine(unitnames.player or UnitName("player"), damagetotals[ids.player] or 0, string.format("%.1f", (damagetotals[ids.player] or 0)/(times[ids.player] or 1)), nil,nil,nil, 1,1,1, 1,1,1)
 	for unit,id in pairs(ids) do
-		if unit ~= "player" then tip:AddMultiLine(unitnames[unit] or UnitName(unit), damagetotals[id] or 0, string.format("%.1f", (damagetotals[id] or 0)/(times[id] or 1)), nil,nil,nil, 1,1,1, 1,1,1) end
+		if unit ~= "player" and unit ~= "pet" then tip:AddMultiLine(unitnames[unit] or UnitName(unit), damagetotals[id] or 0, string.format("%.1f", (damagetotals[id] or 0)/(times[id] or 1)), nil,nil,nil, 1,1,1, 1,1,1) end
 	end
 
 	tip:Show()
