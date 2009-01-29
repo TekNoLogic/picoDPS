@@ -1,10 +1,14 @@
 ## Interface: 30000
+
 ## Title: picoDPS
 ## Notes: A DPS Data Broker plugin.
-## Author: Silverstorm
+## Author: Tekkub Stoutwrithe
+## Version: Alpha
+## X-Website: http://www.tekkub.net/
+## X-Email: tekkub-wow@googlegroups.com
 ## X-Category: Combat
-# X-Website: http://www.wowace.com/wiki/StatBlocks
-## Version: 2.0
+
+## OptionalDeps: tekDebug, tekErr
 
 LibStub.lua
 CallbackHandler-1.0.lua
