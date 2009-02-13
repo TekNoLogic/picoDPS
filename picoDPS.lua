@@ -52,8 +52,12 @@ function f:UNIT_PET(unit)
 		if petid then units[petid] = ids.player end
 	else
 		local group, id = unit:match("^(%D+)(%d+)$")
-		local petid = UnitGUID(group.."pet"..id)
-		if petid then units[petid] = ids[unit] end
+		if not id then
+			print(string.format("picoDPS: Error parsing unit %q", unit))
+		else
+			local petid = UnitGUID(group.."pet"..id)
+			if petid then units[petid] = ids[unit] end
+		end
 	end
 end
 
