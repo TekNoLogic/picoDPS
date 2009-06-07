@@ -35,10 +35,12 @@ function f:PLAYER_LOGIN()
 	if petid then units[petid] = ids.player end
 
 	self:PARTY_MEMBERS_CHANGED()
+	self:RAID_ROSTER_UPDATE()
 
 	self:RegisterEvent("PLAYER_REGEN_ENABLED")
 	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
 	self:RegisterEvent("PARTY_MEMBERS_CHANGED")
+	self:RegisterEvent("RAID_ROSTER_UPDATE")
 	self:RegisterEvent("UNIT_PET")
 
 	self:UnregisterEvent("PLAYER_LOGIN")
@@ -73,6 +75,20 @@ function f:PARTY_MEMBERS_CHANGED()
 
 		local petid = UnitGUID("partypet"..i)
 		if petid then units[petid] = ids["party"..i] end
+	end
+end
+
+
+function f:RAID_ROSTER_UPDATE()
+	for i=1,40 do
+		ids["raid"..i] = UnitGUID("raid"..i)
+		if ids["raid"..i] then
+			units[ids["raid"..i]] = ids["raid"..i]
+			unitnames["raid"..i] = "|cff"..colors[select(2, UnitClass("raid"..i)) or "PRIEST"]..UnitName("raid"..i).."|r"
+		end
+
+		local petid = UnitGUID("raidpet"..i)
+		if petid then units[petid] = ids["raid"..i] end
 	end
 end
 
