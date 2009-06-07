@@ -11,10 +11,6 @@ local obj = LibStub("LibDataBroker-1.1"):NewDataObject("picoDPS", {type = "data 
 local f = CreateFrame("Frame")
 f:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
 f:RegisterEvent("PLAYER_LOGIN")
-f:RegisterEvent("PLAYER_REGEN_ENABLED")
-f:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-f:RegisterEvent("PARTY_MEMBERS_CHANGED")
-f:RegisterEvent("UNIT_PET")
 
 
 f:SetScript("OnUpdate", function(self, elap)
@@ -39,6 +35,11 @@ function f:PLAYER_LOGIN()
 	if petid then units[petid] = ids.player end
 
 	self:PARTY_MEMBERS_CHANGED()
+
+	self:RegisterEvent("PLAYER_REGEN_ENABLED")
+	self:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+	self:RegisterEvent("PARTY_MEMBERS_CHANGED")
+	self:RegisterEvent("UNIT_PET")
 
 	self:UnregisterEvent("PLAYER_LOGIN")
 	self.PLAYER_LOGIN = nil
