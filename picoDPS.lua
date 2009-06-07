@@ -51,7 +51,7 @@ function f:UNIT_PET(unit)
 		local petid = UnitGUID("pet")
 		ids.pet = petid
 		if petid then units[petid] = ids.player end
-	elseif unit ~= "target" then
+	elseif unit ~= "target" and unit ~= "focus" then
 		local group, id = unit:match("^(%D+)(%d+)$")
 		if not id then
 			print(string.format("picoDPS: Error parsing unit %q", unit))
