@@ -1,3 +1,8 @@
+3.1.0.7-Beta
+    Display all recorded data, not just units still in the group
+    Maybe we can track raid damage too...
+    Ignore focus
+
 3.0.9.6-Beta
     Ignore "target" for UNIT_PET
     Add debug output for this blasted UNIT_PET error
