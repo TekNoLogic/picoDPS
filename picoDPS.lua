@@ -26,6 +26,7 @@ end)
 function f:PLAYER_LOGIN()
 	pId = UnitGUID("player")
 
+	ids.player = pId
 	units[pId] = pId
 	unitnames[pId] = "|cff"..colors[select(2, UnitClass("player"))]..UnitName("player").."|r"
 
