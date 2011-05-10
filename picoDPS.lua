@@ -94,7 +94,7 @@ function f:RAID_ROSTER_UPDATE()
 end
 
 
-function f:COMBAT_LOG_EVENT_UNFILTERED(_, eventtype, _, id, _, _, _, _, _, _, spellid, _, _, damage)
+function f:COMBAT_LOG_EVENT_UNFILTERED(_, eventtype, _, id, _, _, _, _, _, _, _, _, spellid, _, _, damage)
 	if not events[eventtype] then return end
 
 	if id == pId or id == ids.pet then
