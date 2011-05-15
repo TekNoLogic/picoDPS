@@ -1,4 +1,4 @@
-## Interface: 30100
+## Interface: 40100
 
 ## Title: picoDPS
 ## Notes: A DPS Data Broker plugin.
