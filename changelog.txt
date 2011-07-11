@@ -1,3 +1,6 @@
+4.2.0.9-Beta
+    Fix for 4.2 CLEU changes
+
 4.1.0.8-Beta
     Seems CLEU changed in 4.1
 
