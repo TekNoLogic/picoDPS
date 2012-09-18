@@ -94,17 +94,16 @@ function f:RAID_ROSTER_UPDATE()
 end
 
 
-function f:COMBAT_LOG_EVENT_UNFILTERED(_, eventtype, _, id, _, _, _, _, _, _, _, _, spellid, _, _, damage)
-	if not events[eventtype] then return end
+function f:COMBAT_LOG_EVENT_UNFILTERED(timestamp, event, hideCaster, sourceGUID, sourceName, sourceFlags, sourceRaidFlags, destGUID, destName, destFlags, destRaidFlags, ...)
+	if not events[event] then return end
 
-	if id == pId or id == ids.pet then
-		if eventtype == "SWING_DAMAGE" then
-			damage = spellid
-		end
-		myDamage = myDamage + damage
+	local spellId, spellName, spellSchool, amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing = ...
+	if event == "SWING_DAMAGE" then
+		amount, overkill, school, resisted, blocked, absorbed, critical, glancing, crushing = ...
 	end
 
-	if units[id] then damagetotals[units[id]] = (damagetotals[units[id]] or 0) + (eventtype == "SWING_DAMAGE" and spellid or damage) end
+	if sourceGUID == pId or sourceGUID == ids.pet then myDamage = myDamage + amount end
+	if units[sourceGUID] then damagetotals[units[sourceGUID]] = (damagetotals[units[sourceGUID]] or 0) + amount end
 end
 
 
