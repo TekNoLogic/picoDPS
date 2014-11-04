@@ -10,9 +10,15 @@
 
 ## OptionalDeps: tekDebug, tekErr
 
+externals\events.lua
+externals\print.lua
+
 LibStub.lua
 CallbackHandler-1.0.lua
 LibDataBroker-1.1.lua
 tektip.lua
 
-picoDPS.lua
+units.lua
+damage_tracker.lua
+dataobj.lua
+tooltip.lua
