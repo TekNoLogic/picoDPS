@@ -8,6 +8,15 @@ for class,color in pairs(RAID_CLASS_COLORS) do colors[class] = string.format("%0
 local obj = LibStub("LibDataBroker-1.1"):NewDataObject("picoDPS", {type = "data source", text = "0.0 DPS"})
 
 
+local function SetText()
+	local dps = (damagetotals[pId] or 0)/(times[pId] or 1)
+	if dps >= 1000 then
+		obj.text = string.format("%.1fk DPS", dps/1000.0)
+	else
+		obj.text = string.format("%.1f DPS", dps)
+	end
+end
+
 local f = CreateFrame("Frame")
 f:SetScript("OnEvent", function(self, event, ...) self[event](self, ...) end)
 f:RegisterEvent("PLAYER_LOGIN")
@@ -18,7 +27,7 @@ f:SetScript("OnUpdate", function(self, elap)
 		if UnitAffectingCombat(unit) then times[id] = (times[id] or 0) + elap end
 	end
 
-	obj.text = string.format("%.1f DPS", (damagetotals[pId] or 0)/(times[pId] or 1))
+	SetText()
 	if shown then obj.OnEnter(shown) end
 end)
 
@@ -108,7 +117,7 @@ end
 
 
 function f:PLAYER_REGEN_ENABLED()
-	obj.text = string.format("%.1f DPS", (damagetotals[pId] or 0)/(times[pId] or 1))
+	SetText()
 end
 
 
