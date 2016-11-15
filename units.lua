@@ -23,13 +23,11 @@ function ns.OnLogin()
 	local petid = UnitGUID("pet")
 	if petid then ns.units[petid], ns.ids.pet = playerid, petid end
 
-	ns.PARTY_MEMBERS_CHANGED()
-	ns.RAID_ROSTER_UPDATE()
+	ns.GROUP_ROSTER_UPDATE()
 
 	ns.RegisterEvent("PLAYER_REGEN_ENABLED")
 	ns.RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
-	ns.RegisterEvent("PARTY_MEMBERS_CHANGED")
-	ns.RegisterEvent("RAID_ROSTER_UPDATE")
+	ns.RegisterEvent("GROUP_ROSTER_UPDATE")
 	ns.RegisterEvent("UNIT_PET")
 end
 
@@ -51,7 +49,7 @@ function ns.UNIT_PET(event, unit)
 end
 
 
-function ns.PARTY_MEMBERS_CHANGED()
+function ns.GROUP_ROSTER_UPDATE()
 	for i=1,4 do
 		local id = UnitGUID("party"..i)
 		ns.ids["party"..i] = id
@@ -64,10 +62,7 @@ function ns.PARTY_MEMBERS_CHANGED()
 		local petid = UnitGUID("partypet"..i)
 		if petid then ns.units[petid] = id end
 	end
-end
 
-
-function ns.RAID_ROSTER_UPDATE()
 	for i=1,40 do
 		local id = UnitGUID("raid"..i)
 		ns.ids["raid"..i] = id
