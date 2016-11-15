@@ -7,11 +7,7 @@ ns.dataobj = LibStub("LibDataBroker-1.1"):NewDataObject("picoDPS", {type = "data
 
 function ns.Refresh()
 	local dps = (ns.damagetotals[ns.ids.player] or 0)/(ns.times[ns.ids.player] or 1)
-	if dps >= 1000 then
-		ns.dataobj.text = string.format("%.1fk DPS", dps/1000.0)
-	else
-		ns.dataobj.text = string.format("%.1f DPS", dps)
-	end
+	ns.dataobj.text = ns.FormatNumber(dps).. " DPS"
 
 	if ns.shown then ns.dataobj.OnEnter(ns.shown) end
 end

@@ -12,6 +12,14 @@ end
 
 
 local tip = LibStub("tektip-1.0").new(3)
+local function AddMultiLine(id, is_player)
+	local name = ns.unitnames[id] or is_player and UnitName("player") or "???"
+	local total = ns.FormatNumber(ns.damagetotals[id] or 0)
+	local dps = ns.FormatNumber((ns.damagetotals[id] or 0)/(ns.times[id] or 1))
+	tip:AddMultiLine(name, total, dps, nil,nil,nil, 1,1,1, 1,1,1)
+end
+
+
 function ns.dataobj:OnEnter()
 	ns.shown = self
 	tip:AnchorTo(self)
@@ -20,9 +28,10 @@ function ns.dataobj:OnEnter()
 	tip:AddLine(" ")
 
 	tip:AddMultiLine("Player", "Total", "DPS")
-	tip:AddMultiLine(ns.unitnames[ns.ids.player] or UnitName("player"), ns.damagetotals[ns.ids.player] or 0, string.format("%.1f", (ns.damagetotals[ns.ids.player] or 0)/(ns.times[ns.ids.player] or 1)), nil,nil,nil, 1,1,1, 1,1,1)
+	AddMultiLine(ns.ids.player, true)
+
 	for id in pairs(ns.damagetotals) do
-		if id ~= ns.ids.player then tip:AddMultiLine(ns.unitnames[id] or "???", ns.damagetotals[id] or 0, string.format("%.1f", (ns.damagetotals[id] or 0)/(ns.times[id] or 1)), nil,nil,nil, 1,1,1, 1,1,1) end
+		if id ~= ns.ids.player then AddMultiLine(id) end
 	end
 
 	tip:Show()
