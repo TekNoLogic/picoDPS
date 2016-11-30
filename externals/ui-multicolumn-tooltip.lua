@@ -93,6 +93,7 @@ local function GetTipAnchor(frame)
 end
 
 function lib:AnchorTo(frame)
+	self:Hide()
 	self:Clear()
 	self:ClearAllPoints()
 	self:SetPoint(GetTipAnchor(frame))
