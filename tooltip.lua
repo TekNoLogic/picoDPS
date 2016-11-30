@@ -11,18 +11,21 @@ local function GetTipAnchor(frame)
 end
 
 
-local tip = LibStub("tektip-1.0").new(4)
+local function FormatTime(time)
+	if time > 60 then
+		return string.format("%d:%d", (time / 60), (time % 60))
+	else
+		return string.format("%ds", time)
+	end
+end
+
+
+local tip = ns.NewTooltip(4, "LEFT", "RIGHT", "RIGHT", "RIGHT")
 local function AddMultiLine(id, is_player)
 	local name = ns.unitnames[id] or is_player and UnitName("player") or "???"
+	local time = FormatTime(ns.times[id] or 0)
 	local total = ns.FormatNumber(ns.damagetotals[id] or 0)
 	local dps = ns.FormatNumber((ns.damagetotals[id] or 0)/(ns.times[id] or 1))
-
-	local time = ns.times[id] or 0
-	if time > 60 then
-		time = string.format("%d:%d", (time / 60), (time % 60))
-	else
-		time = string.format("%ds", time)
-	end
 
 	tip:AddMultiLine(name, time, total, dps, nil,nil,nil, 1,1,1, 1,1,1, 1,1,1)
 end
