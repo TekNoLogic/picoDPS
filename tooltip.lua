@@ -11,12 +11,20 @@ local function GetTipAnchor(frame)
 end
 
 
-local tip = LibStub("tektip-1.0").new(3)
+local tip = LibStub("tektip-1.0").new(4)
 local function AddMultiLine(id, is_player)
 	local name = ns.unitnames[id] or is_player and UnitName("player") or "???"
 	local total = ns.FormatNumber(ns.damagetotals[id] or 0)
 	local dps = ns.FormatNumber((ns.damagetotals[id] or 0)/(ns.times[id] or 1))
-	tip:AddMultiLine(name, total, dps, nil,nil,nil, 1,1,1, 1,1,1)
+
+	local time = ns.times[id] or 0
+	if time > 60 then
+		time = string.format("%d:%d", (time / 60), (time % 60))
+	else
+		time = string.format("%ds", time)
+	end
+
+	tip:AddMultiLine(name, time, total, dps, nil,nil,nil, 1,1,1, 1,1,1, 1,1,1)
 end
 
 
@@ -27,7 +35,7 @@ function ns.dataobj:OnEnter()
 	tip:AddLine("picoDPS")
 	tip:AddLine(" ")
 
-	tip:AddMultiLine("Player", "Total", "DPS")
+	tip:AddMultiLine("Player", "Time", "Total", "DPS")
 	AddMultiLine(ns.ids.player, true)
 
 	for id in pairs(ns.damagetotals) do
