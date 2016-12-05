@@ -1,31 +1,46 @@
-4.2.0.9-Beta
-    Fix for 4.2 CLEU changes
+### 7.1.0.10-Beta
 
-4.1.0.8-Beta
-    Seems CLEU changed in 4.1
+* Fuuuuuuuck.  Fix dead event.
+* Scale numbers down for readability
+* Add time in combat to tooltip
 
-3.1.0.7-Beta
-    Display all recorded data, not just units still in the group
-    Maybe we can track raid damage too...
-    Ignore focus
 
-3.0.9.6-Beta
-    Ignore "target" for UNIT_PET
-    Add debug output for this blasted UNIT_PET error
+### 4.2.0.9-Beta
 
-3.0.3.5-Beta
-    Don't show pet in tooltip
-    Fix pet damage not being counted if pet isn't out on login
+* Fix for 4.2 CLEU changes
 
-3.0.3.4-Beta
-    LDB type
+### 4.1.0.8-Beta
 
-3.0.3.3-Beta
-    tektip!
+* Seems CLEU changed in 4.1
 
-3.0.1.2-Beta
-    Add click to reset
+### 3.1.0.7-Beta
 
-3.0.1.1-Beta
-    And so it begins...
+* Display all recorded data, not just units still in the group
+* Maybe we can track raid damage too...
+* Ignore focus
 
+### 3.0.9.6-Beta
+
+* Ignore "target" for UNIT_PET
+* Add debug output for this blasted UNIT_PET error
+
+### 3.0.3.5-Beta
+
+* Don't show pet in tooltip
+* Fix pet damage not being counted if pet isn't out on login
+
+### 3.0.3.4-Beta
+
+* LDB type
+
+### 3.0.3.3-Beta
+
+* tektip!
+
+### 3.0.1.2-Beta
+
+* Add click to reset
+
+### 3.0.1.1-Beta
+
+* And so it begins...
